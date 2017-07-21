@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -41,19 +42,43 @@
                                 <rect key="frame" x="0.0" y="88.5" width="375" height="578.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LZx-Mw-g1y">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="138" height="147"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="iSG-q4-Vai">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="iSG-q4-Vai" customClass="PhotoCollectionViewCell" customModule="Panorama" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="138" height="147"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="138" height="147"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kTY-5w-7ZJ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="138" height="117"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CuW-8E-nka">
+                                                    <rect key="frame" x="10" y="121" width="118" height="22"/>
+                                                    <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="CuW-8E-nka" secondAttribute="trailing" constant="2" id="4yz-mc-1Dt"/>
+                                            <constraint firstItem="CuW-8E-nka" firstAttribute="top" secondItem="kTY-5w-7ZJ" secondAttribute="bottom" constant="4" id="9tB-Nu-619"/>
+                                            <constraint firstItem="kTY-5w-7ZJ" firstAttribute="top" secondItem="iSG-q4-Vai" secondAttribute="top" id="Sfh-kw-ySf"/>
+                                            <constraint firstAttribute="trailing" secondItem="kTY-5w-7ZJ" secondAttribute="trailing" id="TmB-Un-j7Q"/>
+                                            <constraint firstItem="CuW-8E-nka" firstAttribute="leading" secondItem="iSG-q4-Vai" secondAttribute="leadingMargin" constant="2" id="WyD-pe-T9e"/>
+                                            <constraint firstItem="CuW-8E-nka" firstAttribute="bottom" secondItem="iSG-q4-Vai" secondAttribute="bottomMargin" constant="4" id="cSz-YW-tdO"/>
+                                            <constraint firstItem="kTY-5w-7ZJ" firstAttribute="leading" secondItem="iSG-q4-Vai" secondAttribute="leading" id="ye7-Ht-yHL"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="kTY-5w-7ZJ" id="Y6J-Qs-Fch"/>
+                                            <outlet property="titleLabel" destination="CuW-8E-nka" id="bIC-cr-8lu"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

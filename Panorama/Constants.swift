@@ -7,3 +7,22 @@
 //
 
 import Foundation
+
+class Constants {
+    
+    struct Five00pxURL {
+        static let scheme = "https"
+        static let host = "api.500px.com"
+        static let path = "v1/search"
+    }
+    
+    struct Five00pxParameterKeys {
+        static let term = "term"
+        static let consumerKey = "consumer_key"
+        static let page = "page"
+    }
+    
+    struct Five00pxParameterValues {
+        static let consumerKey = "L1Yj9o68dZub8KbSSYEdCrQG5G4tapkehKgqYVKt"
+    }
+}

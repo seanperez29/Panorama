@@ -13,6 +13,7 @@
 		91CC6D4B1F22A53E00F9BD5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91CC6D4A1F22A53E00F9BD5A /* Assets.xcassets */; };
 		91CC6D4E1F22A53E00F9BD5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91CC6D4C1F22A53E00F9BD5A /* LaunchScreen.storyboard */; };
 		91CC6D5C1F22B1A200F9BD5A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CC6D5B1F22B1A200F9BD5A /* Constants.swift */; };
+		91CC6D5E1F22B38F00F9BD5A /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CC6D5D1F22B38F00F9BD5A /* PhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		91CC6D4D1F22A53E00F9BD5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91CC6D4F1F22A53E00F9BD5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91CC6D5B1F22B1A200F9BD5A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		91CC6D5D1F22B38F00F9BD5A /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				91CC6D5B1F22B1A200F9BD5A /* Constants.swift */,
+				91CC6D5D1F22B38F00F9BD5A /* PhotoCollectionViewCell.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -95,8 +98,16 @@
 		91CC6D5A1F22B19500F9BD5A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				91CC6D5F1F22B3C800F9BD5A /* 500pxAPI */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		91CC6D5F1F22B3C800F9BD5A /* 500pxAPI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = 500pxAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91CC6D461F22A53E00F9BD5A /* ViewController.swift in Sources */,
+				91CC6D5E1F22B38F00F9BD5A /* PhotoCollectionViewCell.swift in Sources */,
 				91CC6D441F22A53E00F9BD5A /* AppDelegate.swift in Sources */,
 				91CC6D5C1F22B1A200F9BD5A /* Constants.swift in Sources */,
 			);
