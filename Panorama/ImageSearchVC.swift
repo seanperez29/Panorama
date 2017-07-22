@@ -21,7 +21,8 @@ class ImageSearchVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.Identifiers.ImageDetailVC {
-            let imageDetailVC = segue.destination as! ImageDetailVC
+            let navigationController = segue.destination as! UINavigationController
+            let imageDetailVC = navigationController.viewControllers[0] as! ImageDetailVC
             let imageResult = sender as! ImageResult
             let imageViewModel = ImageResultViewModel(imageResult: imageResult)
             imageDetailVC.imageViewModel = imageViewModel

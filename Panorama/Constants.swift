@@ -14,6 +14,7 @@ class Constants {
         static let scheme = "https"
         static let host = "api.500px.com"
         static let path = "/v1/photos/search"
+        static let singlePhotoPath = "/v1/photos"
     }
     
     struct Five00pxParameterKeys {

@@ -10,11 +10,13 @@ import Foundation
 import UIKit
 
 final class ImageResultViewModel {
-
+    
+    let imageID: String
     let descriptionText: String?
     let cameraText: String?
     let photographerText: String
     let imageUrl: String
+    var largerImageURL: String? = ""
     let nameText: String
     let ratingText: String
     let favoritesText: String
@@ -29,5 +31,6 @@ final class ImageResultViewModel {
         favoritesText = imageResult.favoritesCount != nil ? "\(imageResult.favoritesCount!)" : "0"
         viewsText = imageResult.timesViewed != nil ? "\(imageResult.timesViewed!)" : "0"
         imageUrl = imageResult.imageURL
+        imageID = "\(imageResult.id!)"
     }
 }

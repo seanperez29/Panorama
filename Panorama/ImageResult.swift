@@ -18,6 +18,7 @@ class ImageResult: Mappable {
     var rating: Int!
     var timesViewed: Int!
     var imageURL: String!
+    var largerImageURL: String!
     var userFullName: String!
     var favoritesCount: Int!
     
