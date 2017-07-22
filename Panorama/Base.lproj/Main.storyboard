@@ -33,7 +33,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="88.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PanoramaBlack" translatesAutoresizingMaskIntoConstraints="NO" id="y87-kY-o3e">
-                                        <rect key="frame" x="56" y="23" width="263" height="44.5"/>
+                                        <rect key="frame" x="56" y="22" width="263" height="44.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -99,10 +99,14 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="baZ-xh-MZf"/>
                                 </connections>
                             </searchBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="YEu-wh-fP1">
+                                <rect key="frame" x="177" y="150.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="P9u-pc-YQw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="60I-l5-M8o"/>
+                            <constraint firstItem="YEu-wh-fP1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6Vw-C8-5O8"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jDt-tj-DNt" secondAttribute="bottom" id="6Wy-dV-QHU"/>
                             <constraint firstItem="jDt-tj-DNt" firstAttribute="top" secondItem="APd-Cy-4mK" secondAttribute="bottom" id="ANG-Qf-8Kt"/>
                             <constraint firstItem="APd-Cy-4mK" firstAttribute="top" secondItem="P9u-pc-YQw" secondAttribute="bottom" id="AVS-om-2G9"/>
@@ -114,12 +118,14 @@
                             <constraint firstItem="P9u-pc-YQw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="isV-ID-cSR"/>
                             <constraint firstAttribute="trailing" secondItem="P9u-pc-YQw" secondAttribute="trailing" id="m50-xz-jWl"/>
                             <constraint firstItem="P9u-pc-YQw" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.133" id="oJs-ud-bbe"/>
+                            <constraint firstItem="YEu-wh-fP1" firstAttribute="centerY" secondItem="APd-Cy-4mK" secondAttribute="centerY" constant="50" id="yul-Ho-Lcs"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="search-2" id="a5O-Fu-kSN"/>
                     <navigationItem key="navigationItem" id="dY3-bP-OaW"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="YEu-wh-fP1" id="zAf-3J-DJw"/>
                         <outlet property="collectionView" destination="jDt-tj-DNt" id="yX6-wg-PWu"/>
                         <outlet property="searchBar" destination="APd-Cy-4mK" id="Zql-lL-MEJ"/>
                         <segue destination="KHU-kr-JtA" kind="presentation" identifier="ImageDetailVC" id="aaC-Py-MtH"/>
@@ -145,7 +151,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="88.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Favorites" translatesAutoresizingMaskIntoConstraints="NO" id="wgL-nq-UG5">
-                                        <rect key="frame" x="57" y="23" width="262" height="44.5"/>
+                                        <rect key="frame" x="57" y="22" width="262" height="44.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -174,7 +180,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8C-WM-77u">
-                                                    <rect key="frame" x="80" y="28.5" width="551" height="22"/>
+                                                    <rect key="frame" x="80" y="28.5" width="287" height="22"/>
                                                     <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -272,10 +278,15 @@
                                                         <action selector="addToFavorites:" destination="imU-kf-bEn" eventType="touchUpInside" id="Cov-N1-WIr"/>
                                                     </connections>
                                                 </button>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1sS-Mp-djy">
+                                                    <rect key="frame" x="177" y="115" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="8Ld-mx-llO" secondAttribute="bottom" id="4DP-MZ-zbl"/>
                                                 <constraint firstAttribute="trailing" secondItem="8Ld-mx-llO" secondAttribute="trailing" id="Bj8-9b-zwv"/>
+                                                <constraint firstItem="1sS-Mp-djy" firstAttribute="centerX" secondItem="k6g-Ib-2kz" secondAttribute="centerX" id="EHF-6T-4MP"/>
+                                                <constraint firstItem="1sS-Mp-djy" firstAttribute="centerY" secondItem="k6g-Ib-2kz" secondAttribute="centerY" id="Ky4-08-IqF"/>
                                                 <constraint firstAttribute="bottom" secondItem="8Ld-mx-llO" secondAttribute="bottom" id="S5D-kv-ivJ"/>
                                                 <constraint firstItem="B9W-1u-s7a" firstAttribute="top" secondItem="k6g-Ib-2kz" secondAttribute="top" constant="8" id="W0K-dz-o6j"/>
                                                 <constraint firstItem="B9W-1u-s7a" firstAttribute="height" secondItem="8Ld-mx-llO" secondAttribute="width" multiplier="0.1" id="lYX-x2-bE9"/>
@@ -391,18 +402,19 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a description label and let's test how it will look with multiple lines of text." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spa-rc-dUJ">
-                                                    <rect key="frame" x="8" y="39.5" width="359" height="23.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="This is a description label and let's test how it will look with multiple lines of text." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Spa-rc-dUJ">
+                                                    <rect key="frame" x="8" y="40" width="359" height="42"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Spa-rc-dUJ" secondAttribute="bottom" constant="8" id="DBg-GB-T4A"/>
                                                 <constraint firstItem="F2m-QY-zQg" firstAttribute="top" secondItem="27K-y7-Kie" secondAttribute="top" constant="8" id="Vlk-XT-Q5e"/>
                                                 <constraint firstItem="F2m-QY-zQg" firstAttribute="leading" secondItem="27K-y7-Kie" secondAttribute="leading" constant="8" id="c8O-eA-DtI"/>
-                                                <constraint firstAttribute="trailing" secondItem="Spa-rc-dUJ" secondAttribute="trailing" constant="8" id="e5S-2z-rVA"/>
                                                 <constraint firstItem="Spa-rc-dUJ" firstAttribute="top" secondItem="F2m-QY-zQg" secondAttribute="bottom" constant="8" id="jwr-OG-IAT"/>
+                                                <constraint firstAttribute="trailing" secondItem="Spa-rc-dUJ" secondAttribute="trailing" constant="8" id="nWv-A4-eHa"/>
                                                 <constraint firstItem="Spa-rc-dUJ" firstAttribute="leading" secondItem="27K-y7-Kie" secondAttribute="leading" constant="8" id="qzs-aK-bCR"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -494,6 +506,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="1sS-Mp-djy" id="sSY-kk-pyw"/>
                         <outlet property="cameraLabel" destination="xId-CU-bdG" id="urS-mV-tVI"/>
                         <outlet property="descriptionLabel" destination="Spa-rc-dUJ" id="Qb9-Ug-JXQ"/>
                         <outlet property="favoriteButton" destination="B9W-1u-s7a" id="gSc-wb-V3A"/>

@@ -12,6 +12,7 @@ class ImageSearchVC: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var imageResults = [ImageResult]()
     var currentPage = 1
     var currentSearchTerm = ""
@@ -19,6 +20,7 @@ class ImageSearchVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.isHidden = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
@@ -111,6 +113,8 @@ extension ImageSearchVC: UICollectionViewDelegateFlowLayout {
 extension ImageSearchVC: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchTerm = searchBar.text else { return }
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         currentSearchTerm = searchTerm
         Five00pxClient.sharedInstance.performImageSearch(searchTerm, 1) { [weak self] (results, errorString) in
             guard let strongSelf = self else { return }
@@ -124,6 +128,8 @@ extension ImageSearchVC: UISearchBarDelegate {
             } else {
                 strongSelf.imageResults = results!
                 strongSelf.hasReloaded = true
+                strongSelf.activityIndicator.isHidden = true
+                strongSelf.activityIndicator.stopAnimating()
                 strongSelf.collectionView.reloadData()
             }
         }

@@ -20,12 +20,14 @@ class ImageDetailVC: UITableViewController {
     @IBOutlet weak var viewsLabel: UILabel!
     @IBOutlet weak var favoritesLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var imageViewModel: ImageResultViewModel!
     var imageResult: ImageResult!
     var imageResultsArray: Results<ImageRealmObject>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.startAnimating()
         loadFavoritesAndSetFavoritesButton()
         setUIForImageResult()
         Five00pxClient.sharedInstance.retrieveIndividualPhoto(imageViewModel) { [weak self] (image, errorString) in
@@ -34,6 +36,8 @@ class ImageDetailVC: UITableViewController {
                 strongSelf.showAlert(errorString!)
                 return
             }
+            strongSelf.activityIndicator.isHidden = true
+            strongSelf.activityIndicator.stopAnimating()
             strongSelf.imageView.image = image
         }
     }
@@ -91,6 +95,8 @@ extension ImageDetailVC {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return view.bounds.size.width / 1.5
+        } else if indexPath.row == 4 {
+            return 90
         } else {
             return 72
         }
