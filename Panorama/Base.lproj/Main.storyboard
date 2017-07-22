@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Image SearchVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Panorama" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ImageSearchVC" id="BYZ-38-t0r" customClass="ImageSearchVC" customModule="Panorama" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -39,7 +39,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jDt-tj-DNt">
-                                <rect key="frame" x="0.0" y="88.5" width="375" height="578.5"/>
+                                <rect key="frame" x="0.0" y="132.5" width="375" height="534.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LZx-Mw-g1y">
                                     <size key="itemSize" width="138" height="147"/>
@@ -82,20 +82,34 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vVM-Yd-Bdr">
+                                <rect key="frame" x="0.0" y="88" width="375" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="TUf-7u-3xU"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="P9u-pc-YQw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="60I-l5-M8o"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jDt-tj-DNt" secondAttribute="bottom" id="6Wy-dV-QHU"/>
                             <constraint firstItem="P9u-pc-YQw" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="BZF-k1-qol"/>
-                            <constraint firstItem="jDt-tj-DNt" firstAttribute="top" secondItem="P9u-pc-YQw" secondAttribute="bottom" id="EBR-RH-hYx"/>
                             <constraint firstAttribute="trailing" secondItem="jDt-tj-DNt" secondAttribute="trailing" id="NZY-KO-4ni"/>
+                            <constraint firstItem="jDt-tj-DNt" firstAttribute="top" secondItem="vVM-Yd-Bdr" secondAttribute="bottom" id="PAA-Uh-WCV"/>
                             <constraint firstItem="jDt-tj-DNt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dhR-qv-P9i"/>
                             <constraint firstItem="P9u-pc-YQw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="isV-ID-cSR"/>
                             <constraint firstAttribute="trailing" secondItem="P9u-pc-YQw" secondAttribute="trailing" id="m50-xz-jWl"/>
+                            <constraint firstItem="vVM-Yd-Bdr" firstAttribute="top" secondItem="P9u-pc-YQw" secondAttribute="bottom" id="mD8-Gv-Au1"/>
                             <constraint firstItem="P9u-pc-YQw" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.133" id="oJs-ud-bbe"/>
+                            <constraint firstAttribute="trailing" secondItem="vVM-Yd-Bdr" secondAttribute="trailing" id="qEt-A8-gvQ"/>
+                            <constraint firstItem="vVM-Yd-Bdr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zow-YW-8xW"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="jDt-tj-DNt" id="yX6-wg-PWu"/>
+                        <outlet property="searchBarContainer" destination="vVM-Yd-Bdr" id="HN1-Xi-NFb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
