@@ -30,5 +30,6 @@ class Constants {
         static let PhotoCollectionViewCell = "PhotoCell"
         static let ImageDetailVC = "ImageDetailVC"
         static let ImageSearchVC = "ImageSearchVC"
+        static let ImageDetailTableCell = "ImageDetailTableCell"
     }
 }

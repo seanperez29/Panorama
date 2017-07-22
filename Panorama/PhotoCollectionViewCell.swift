@@ -16,7 +16,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     func configureCell(_ imageResult: ImageResult) {
         titleLabel.text = imageResult.name
-        dataTask = Five00pxClient.sharedInstance.getImage(imageResult.imageURL, completionHandler: { [weak self] (data, errorString) in
+        dataTask = Five00pxClient.sharedInstance.getImage(imageResult.imageURL) { [weak self] (data, errorString) in
             guard let strongSelf = self else { return }
             guard errorString == nil else {
                 print("Unable to download image")
@@ -25,7 +25,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
             if let image = UIImage(data: data!) {
                 strongSelf.imageView.image = image
             }
-        })
+        }
         
         
         
