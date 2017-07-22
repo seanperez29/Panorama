@@ -13,6 +13,8 @@
 		9142EAF31F23F09B001DAB23 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142EAF21F23F09B001DAB23 /* FavoritesTableViewCell.swift */; };
 		9142EAF51F23F13C001DAB23 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142EAF41F23F13C001DAB23 /* FavoritesViewController.swift */; };
 		9142EAF71F240640001DAB23 /* DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142EAF61F240640001DAB23 /* DismissKeyboard.swift */; };
+		9142EAFA1F2407C5001DAB23 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142EAF81F2407C5001DAB23 /* ActivityCell.swift */; };
+		9142EAFB1F2407C5001DAB23 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9142EAF91F2407C5001DAB23 /* ActivityCell.xib */; };
 		91CC6D441F22A53E00F9BD5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CC6D431F22A53E00F9BD5A /* AppDelegate.swift */; };
 		91CC6D461F22A53E00F9BD5A /* ImageSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CC6D451F22A53E00F9BD5A /* ImageSearchVC.swift */; };
 		91CC6D491F22A53E00F9BD5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91CC6D471F22A53E00F9BD5A /* Main.storyboard */; };
@@ -33,6 +35,8 @@
 		9142EAF21F23F09B001DAB23 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		9142EAF41F23F13C001DAB23 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		9142EAF61F240640001DAB23 /* DismissKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
+		9142EAF81F2407C5001DAB23 /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
+		9142EAF91F2407C5001DAB23 /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
 		91CC6D401F22A53E00F9BD5A /* Panorama.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Panorama.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91CC6D431F22A53E00F9BD5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91CC6D451F22A53E00F9BD5A /* ImageSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchVC.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 				91CC6D761F2318E500F9BD5A /* ImageResultViewModel.swift */,
 				9142EAEE1F23EE19001DAB23 /* ImageRealmObject.swift */,
 				9142EAF21F23F09B001DAB23 /* FavoritesTableViewCell.swift */,
+				9142EAF81F2407C5001DAB23 /* ActivityCell.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -133,6 +138,7 @@
 			children = (
 				91CC6D471F22A53E00F9BD5A /* Main.storyboard */,
 				91CC6D4C1F22A53E00F9BD5A /* LaunchScreen.storyboard */,
+				9142EAF91F2407C5001DAB23 /* ActivityCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -237,6 +243,7 @@
 			files = (
 				91CC6D4E1F22A53E00F9BD5A /* LaunchScreen.storyboard in Resources */,
 				91CC6D4B1F22A53E00F9BD5A /* Assets.xcassets in Resources */,
+				9142EAFB1F2407C5001DAB23 /* ActivityCell.xib in Resources */,
 				91CC6D491F22A53E00F9BD5A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +310,7 @@
 				91CC6D671F22CFC000F9BD5A /* Five00pxTasks.swift in Sources */,
 				91CC6D651F22BFC200F9BD5A /* Five00pxClient.swift in Sources */,
 				91CC6D441F22A53E00F9BD5A /* AppDelegate.swift in Sources */,
+				9142EAFA1F2407C5001DAB23 /* ActivityCell.swift in Sources */,
 				9142EAEF1F23EE19001DAB23 /* ImageRealmObject.swift in Sources */,
 				9142EAED1F23E201001DAB23 /* ShowAlert.swift in Sources */,
 				91CC6D6B1F22F3BB00F9BD5A /* ImageDetailVC.swift in Sources */,

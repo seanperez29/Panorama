@@ -15,12 +15,15 @@ class ImageSearchVC: UIViewController {
     var imageResults = [ImageResult]()
     var currentPage = 1
     var currentSearchTerm = ""
+    var hasReloaded = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+        let cellNib = UINib(nibName: "ActivityCell", bundle: nil)
+        collectionView.register(cellNib, forCellWithReuseIdentifier: "ActivityCell")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -38,13 +41,24 @@ class ImageSearchVC: UIViewController {
 
 extension ImageSearchVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageResults.count
+        return imageResults.count + 1
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Identifiers.PhotoCollectionViewCell, for: indexPath) as! PhotoCollectionViewCell
-        let imageResult = imageResults[indexPath.row]
-        cell.configureCell(imageResult)
-        return cell
+        if indexPath.item == imageResults.count {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ActivityCell", for: indexPath) as! ActivityCell
+            if hasReloaded {
+                cell.activityIndicator.startAnimating()
+                cell.activityIndicator.isHidden = false
+            } else {
+                cell.activityIndicator.isHidden = true
+            }
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Identifiers.PhotoCollectionViewCell, for: indexPath) as! PhotoCollectionViewCell
+            let imageResult = imageResults[indexPath.row]
+            cell.configureCell(imageResult)
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -104,8 +118,14 @@ extension ImageSearchVC: UISearchBarDelegate {
                 strongSelf.showAlert(errorString!)
                 return
             }
-            strongSelf.imageResults = results!
-            strongSelf.collectionView.reloadData()
+            if results!.isEmpty {
+                strongSelf.hasReloaded = false
+                strongSelf.showAlert("No search results found")
+            } else {
+                strongSelf.imageResults = results!
+                strongSelf.hasReloaded = true
+                strongSelf.collectionView.reloadData()
+            }
         }
         searchBar.resignFirstResponder()
         searchBar.text = ""
