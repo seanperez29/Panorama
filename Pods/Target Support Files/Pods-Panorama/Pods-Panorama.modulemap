@@ -1,0 +1,6 @@
+framework module Pods_Panorama {
+  umbrella header "Pods-Panorama-umbrella.h"
+
+  export *
+  module * { export * }
+}

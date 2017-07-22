@@ -10,10 +10,18 @@ import Foundation
 
 class Five00pxClient {
     
-    func performImageSearch(_ searchTerm: String, _ pageNumber: Int, completionHandler: @escaping (_ results: AnyObject?, _ errorString: String?) -> Void) {
+    static let sharedInstance = Five00pxClient()
+    
+    func performImageSearch(_ searchTerm: String, _ pageNumber: Int, completionHandler: @escaping (_ results: [ImageResult]?, _ errorString: String?) -> Void) {
         let methodParameters = [Constants.Five00pxParameterKeys.term: searchTerm, Constants.Five00pxParameterKeys.consumerKey: Constants.Five00pxParameterValues.consumerKey, Constants.Five00pxParameterKeys.page: pageNumber] as [String: AnyObject]
         
-        
+        taskForImageItems(methodParameters) { (results, errorString) in
+            guard errorString == nil else {
+                completionHandler(nil, errorString)
+                return
+            }
+            completionHandler(results, nil)
+        }
     }
     
 }

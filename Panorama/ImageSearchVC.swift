@@ -13,6 +13,7 @@ class ImageSearchVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBarContainer: UIView!
     var searchController: UISearchController!
+    var imageResults: [ImageResult]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +32,22 @@ class ImageSearchVC: UIViewController {
 
 }
 
+extension ImageSearchVC: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+}
+
 extension ImageSearchVC: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        Five00pxClient.sharedInstance.performImageSearch(searchBar.text!, 1) { [weak self] (results, errorString) in
+            guard errorString == nil else {
+                print(errorString)
+                return
+            }
+            if let strongSelf = self {
+                strongSelf.imageResults = results
+                strongSelf.collectionView.reloadData()
+            }
+        }
         searchBar.resignFirstResponder()
         searchBar.text = ""
         searchBar.showsCancelButton = false
