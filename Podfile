@@ -7,5 +7,6 @@ target 'Panorama' do
 
   # Pods for Panorama
   pod 'ObjectMapper', '~> 2.2'
+  pod 'RealmSwift'
 
 end

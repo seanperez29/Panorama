@@ -27,6 +27,7 @@ class ImageSearchVC: UIViewController {
             let imageResult = sender as! ImageResult
             let imageViewModel = ImageResultViewModel(imageResult: imageResult)
             imageDetailVC.imageViewModel = imageViewModel
+            imageDetailVC.imageResult = imageResult
         }
     }
     
@@ -68,6 +69,7 @@ extension ImageSearchVC: UICollectionViewDelegate, UICollectionViewDataSource {
             }
         }
     }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         self.collectionView.layoutIfNeeded()
         self.collectionView.collectionViewLayout.invalidateLayout()
