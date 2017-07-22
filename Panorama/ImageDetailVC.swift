@@ -90,7 +90,7 @@ extension ImageDetailVC {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return view.bounds.size.height / 4
+            return view.bounds.size.width / 1.5
         } else {
             return 72
         }
