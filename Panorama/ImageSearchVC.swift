@@ -11,50 +11,56 @@ import UIKit
 class ImageSearchVC: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var searchBarContainer: UIView!
-    var searchController: UISearchController!
-    var imageResults: [ImageResult]!
+    @IBOutlet weak var searchBar: UISearchBar!
+    var imageResults = [ImageResult]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupSearchController()
+
     }
     
-    func setupSearchController() {
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.sizeToFit()
-        searchBarContainer.addSubview(searchController.searchBar)
-        automaticallyAdjustsScrollViewInsets = false
-        definesPresentationContext = true
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.delegate = self
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.Identifiers.ImageDetailVC {
+            let imageDetailVC = storyboard!.instantiateViewController(withIdentifier: Constants.Identifiers.ImageDetailVC) as! ImageDetailVC
+            let imageResult = sender as! ImageResult
+            imageDetailVC.imageResult = imageResult
+        }
     }
-
+    
 }
 
 extension ImageSearchVC: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageResults.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Identifiers.PhotoCollectionViewCell, for: indexPath) as! PhotoCollectionViewCell
+        let imageResult = imageResults[indexPath.row]
+        cell.configureCell(imageResult)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let imageResult = imageResults[indexPath.row]
+        performSegue(withIdentifier: Constants.Identifiers.ImageDetailVC, sender: imageResult)
+    }
     
 }
 
 extension ImageSearchVC: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         Five00pxClient.sharedInstance.performImageSearch(searchBar.text!, 1) { [weak self] (results, errorString) in
-            guard errorString == nil else {
+            guard errorString == nil, results != nil else {
                 print(errorString)
                 return
             }
             if let strongSelf = self {
-                strongSelf.imageResults = results
+                strongSelf.imageResults = results!
                 strongSelf.collectionView.reloadData()
             }
         }
         searchBar.resignFirstResponder()
         searchBar.text = ""
-        searchBar.showsCancelButton = false
     }
-    
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.showsCancelButton = true
-        return true
-    }
+
 }

@@ -25,4 +25,10 @@ class Constants {
     struct Five00pxParameterValues {
         static let consumerKey = "L1Yj9o68dZub8KbSSYEdCrQG5G4tapkehKgqYVKt"
     }
+    
+    struct Identifiers {
+        static let PhotoCollectionViewCell = "PhotoCell"
+        static let ImageDetailVC = "ImageDetailVC"
+        static let ImageSearchVC = "ImageSearchVC"
+    }
 }

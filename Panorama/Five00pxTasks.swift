@@ -11,7 +11,6 @@ import Foundation
 extension Five00pxClient {
     
     func taskForImageItems(_ parameters: [String: AnyObject], completionHandler: @escaping (_ results: [ImageResult]?, _ errorString: String?) -> Void) {
-        let session = URLSession.shared
         var request = URLRequest(url: five00pxURLFromParameters(parameters))
         request.httpMethod = "GET"
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -52,6 +51,22 @@ extension Five00pxClient {
             completionHandler(resultsArray, nil)
         }
         task.resume()
+    }
+    
+    func getImage(_ imageUrl: String, completionHandler: @escaping (_ imageData: Data?, _ errorString: String?) -> Void) -> URLSessionDataTask {
+        guard let url = URL(string: imageUrl) else { return URLSessionDataTask() }
+        let request = URLRequest(url: url)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            DispatchQueue.main.async {
+                if let error = error {
+                    completionHandler(nil, error.localizedDescription)
+                } else {
+                    completionHandler(data, nil)
+                }
+            }
+        }
+        task.resume()
+        return task
     }
     
     func five00pxURLFromParameters(_ parameters: [String:AnyObject]) -> URL {

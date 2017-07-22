@@ -11,6 +11,7 @@ import Foundation
 class Five00pxClient {
     
     static let sharedInstance = Five00pxClient()
+    let session = URLSession.shared
     
     func performImageSearch(_ searchTerm: String, _ pageNumber: Int, completionHandler: @escaping (_ results: [ImageResult]?, _ errorString: String?) -> Void) {
         let methodParameters = [Constants.Five00pxParameterKeys.term: searchTerm, Constants.Five00pxParameterKeys.consumerKey: Constants.Five00pxParameterValues.consumerKey, Constants.Five00pxParameterKeys.page: pageNumber] as [String: AnyObject]
@@ -20,7 +21,9 @@ class Five00pxClient {
                 completionHandler(nil, errorString)
                 return
             }
-            completionHandler(results, nil)
+            DispatchQueue.main.async {
+                completionHandler(results, nil)
+            }
         }
     }
     
