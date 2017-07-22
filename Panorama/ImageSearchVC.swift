@@ -20,7 +20,7 @@ class ImageSearchVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator.isHidden = true
+        setTheActivityIndicator(false)
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
@@ -36,6 +36,16 @@ class ImageSearchVC: UIViewController {
             let imageViewModel = ImageResultViewModel(imageResult: imageResult)
             imageDetailVC.imageViewModel = imageViewModel
             imageDetailVC.imageResult = imageResult
+        }
+    }
+    
+    func setTheActivityIndicator(_ bool: Bool) {
+        if bool {
+            activityIndicator.startAnimating()
+            activityIndicator.isHidden = !bool
+        } else {
+            activityIndicator.stopAnimating()
+            activityIndicator.isHidden = !bool
         }
     }
     
@@ -93,6 +103,7 @@ extension ImageSearchVC: UICollectionViewDelegate, UICollectionViewDataSource {
         self.collectionView.layoutIfNeeded()
         self.collectionView.collectionViewLayout.invalidateLayout()
     }
+    
 }
 
 extension ImageSearchVC: UICollectionViewDelegateFlowLayout {
@@ -113,8 +124,7 @@ extension ImageSearchVC: UICollectionViewDelegateFlowLayout {
 extension ImageSearchVC: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchTerm = searchBar.text else { return }
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
+        setTheActivityIndicator(true)
         currentSearchTerm = searchTerm
         Five00pxClient.sharedInstance.performImageSearch(searchTerm, 1) { [weak self] (results, errorString) in
             guard let strongSelf = self else { return }
@@ -124,12 +134,12 @@ extension ImageSearchVC: UISearchBarDelegate {
             }
             if results!.isEmpty {
                 strongSelf.hasReloaded = false
+                strongSelf.setTheActivityIndicator(false)
                 strongSelf.showAlert("No search results found")
             } else {
                 strongSelf.imageResults = results!
                 strongSelf.hasReloaded = true
-                strongSelf.activityIndicator.isHidden = true
-                strongSelf.activityIndicator.stopAnimating()
+                strongSelf.setTheActivityIndicator(false)
                 strongSelf.collectionView.reloadData()
             }
         }
