@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		378704CE5E8C355F3C109586 /* Pods_Panorama.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB9BC2446996041EC570A04 /* Pods_Panorama.framework */; };
+		9142EAED1F23E201001DAB23 /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142EAEC1F23E201001DAB23 /* ShowAlert.swift */; };
 		91CC6D441F22A53E00F9BD5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CC6D431F22A53E00F9BD5A /* AppDelegate.swift */; };
 		91CC6D461F22A53E00F9BD5A /* ImageSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CC6D451F22A53E00F9BD5A /* ImageSearchVC.swift */; };
 		91CC6D491F22A53E00F9BD5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91CC6D471F22A53E00F9BD5A /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9142EAEC1F23E201001DAB23 /* ShowAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
 		91CC6D401F22A53E00F9BD5A /* Panorama.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Panorama.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91CC6D431F22A53E00F9BD5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91CC6D451F22A53E00F9BD5A /* ImageSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchVC.swift; sourceTree = "<group>"; };
@@ -63,6 +65,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9142EAEB1F23E1DC001DAB23 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9142EAEC1F23E201001DAB23 /* ShowAlert.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		91CC6D371F22A53D00F9BD5A = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				91CC6D5A1F22B19500F9BD5A /* Services */,
+				9142EAEB1F23E1DC001DAB23 /* Extensions */,
 				91CC6D551F22B05300F9BD5A /* Model */,
 				91CC6D561F22B05900F9BD5A /* View */,
 				91CC6D571F22B05D00F9BD5A /* Controller */,
@@ -278,6 +289,7 @@
 				91CC6D671F22CFC000F9BD5A /* Five00pxTasks.swift in Sources */,
 				91CC6D651F22BFC200F9BD5A /* Five00pxClient.swift in Sources */,
 				91CC6D441F22A53E00F9BD5A /* AppDelegate.swift in Sources */,
+				9142EAED1F23E201001DAB23 /* ShowAlert.swift in Sources */,
 				91CC6D6B1F22F3BB00F9BD5A /* ImageDetailVC.swift in Sources */,
 				91CC6D691F22D84000F9BD5A /* ImageResult.swift in Sources */,
 				91CC6D5C1F22B1A200F9BD5A /* Constants.swift in Sources */,
@@ -353,6 +365,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -396,6 +409,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

@@ -15,11 +15,9 @@ class ImageSearchVC: UIViewController {
     var imageResults = [ImageResult]()
     var currentPage = 1
     var currentSearchTerm = ""
-    var currentIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -50,17 +48,29 @@ extension ImageSearchVC: UICollectionViewDelegate, UICollectionViewDataSource {
         performSegue(withIdentifier: Constants.Identifiers.ImageDetailVC, sender: imageResult)
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == imageResults.count - 1 {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height
+        if (bottomEdge >= scrollView.contentSize.height) {
             currentPage += 1
             Five00pxClient.sharedInstance.performImageSearch(currentSearchTerm, currentPage) { [weak self] (results, errorString) in
                 guard let strongSelf = self else { return }
                 guard errorString == nil else {
-                    print(errorString)
+                    strongSelf.showAlert(errorString!)
                     return
                 }
+                let resultCount = strongSelf.imageResults.count
+                let (start, end) = (resultCount, results!.count + resultCount)
+                let indexPaths = (start..<end).map { return IndexPath(row: $0, section: 0) }
+                strongSelf.imageResults.append(contentsOf: results!)
+                strongSelf.collectionView.performBatchUpdates({
+                    strongSelf.collectionView.insertItems(at: indexPaths)
+                }, completion: nil)
             }
         }
+    }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        self.collectionView.layoutIfNeeded()
+        self.collectionView.collectionViewLayout.invalidateLayout()
     }
 }
 
@@ -84,15 +94,13 @@ extension ImageSearchVC: UISearchBarDelegate {
         guard let searchTerm = searchBar.text else { return }
         currentSearchTerm = searchTerm
         Five00pxClient.sharedInstance.performImageSearch(searchTerm, 1) { [weak self] (results, errorString) in
+            guard let strongSelf = self else { return }
             guard errorString == nil, results != nil else {
-                print(errorString)
+                strongSelf.showAlert(errorString!)
                 return
             }
-            if let strongSelf = self {
-                strongSelf.imageResults = results!
-                strongSelf.currentIndex = strongSelf.imageResults.count - 1
-                strongSelf.collectionView.reloadData()
-            }
+            strongSelf.imageResults = results!
+            strongSelf.collectionView.reloadData()
         }
         searchBar.resignFirstResponder()
         searchBar.text = ""

@@ -32,7 +32,7 @@ class ImageDetailVC: UITableViewController {
         Five00pxClient.sharedInstance.retrieveIndividualPhoto(imageViewModel) { [weak self] (image, errorString) in
             guard let strongSelf = self else { return }
             guard errorString == nil else {
-                print(errorString)
+                strongSelf.showAlert(errorString!)
                 return
             }
             strongSelf.imageView.image = image
