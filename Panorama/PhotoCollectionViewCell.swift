@@ -26,20 +26,13 @@ class PhotoCollectionViewCell: UICollectionViewCell {
                 strongSelf.imageView.image = image
             }
         }
-        
-        
-        
-//        dataTask = SpotifyClient.sharedInstance.getImage(searchResult.albumURL, completionHandler: { (imageData, errorString) in
-//            guard (errorString == nil) else {
-//                print("Unable to download image: \(errorString!)")
-//                return
-//            }
-//            if let image = UIImage(data: imageData!) {
-//                performUIUpdatesOnMain {
-//                    self.albumImage.image = image
-//                }
-//            }
-//        })
+    }
+    
+    override func prepareForReuse() {
+        dataTask?.cancel()
+        dataTask = nil
+        imageView.image = nil
+        titleLabel.text = nil
     }
     
 }

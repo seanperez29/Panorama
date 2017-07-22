@@ -22,11 +22,6 @@ class ImageDetailVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Five00pxClient.sharedInstance.retrieveIndividualPhoto(imageViewModel) { (results, errorString) in
-            print(results!)
-        }
-        
-        
         nameLabel.text = imageViewModel.nameText
         photographerLabel.text = imageViewModel.photographerText
         cameraLabel.text = imageViewModel.cameraText
@@ -43,5 +38,10 @@ class ImageDetailVC: UITableViewController {
             strongSelf.imageView.image = image
         }
     }
+    
+    @IBAction func backPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 
 }

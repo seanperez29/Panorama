@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="88.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PanoramaBlack" translatesAutoresizingMaskIntoConstraints="NO" id="y87-kY-o3e">
-                                        <rect key="frame" x="56.5" y="32.5" width="263" height="44.5"/>
+                                        <rect key="frame" x="56.5" y="22" width="263" height="44.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -40,7 +40,7 @@
                                     <constraint firstItem="y87-kY-o3e" firstAttribute="height" secondItem="P9u-pc-YQw" secondAttribute="height" multiplier="0.5" id="8l5-Td-ufr"/>
                                     <constraint firstItem="y87-kY-o3e" firstAttribute="centerX" secondItem="P9u-pc-YQw" secondAttribute="centerX" id="PfG-Tf-KUZ"/>
                                     <constraint firstItem="y87-kY-o3e" firstAttribute="width" secondItem="P9u-pc-YQw" secondAttribute="width" multiplier="0.7" id="axl-Tb-QSN"/>
-                                    <constraint firstItem="y87-kY-o3e" firstAttribute="centerY" secondItem="P9u-pc-YQw" secondAttribute="centerY" constant="10" id="v2q-Um-Myi"/>
+                                    <constraint firstItem="y87-kY-o3e" firstAttribute="centerY" secondItem="P9u-pc-YQw" secondAttribute="centerY" id="v2q-Um-Myi"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jDt-tj-DNt">
@@ -115,15 +115,17 @@
                             <constraint firstItem="P9u-pc-YQw" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.133" id="oJs-ud-bbe"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="dY3-bP-OaW"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="jDt-tj-DNt" id="yX6-wg-PWu"/>
                         <outlet property="searchBar" destination="APd-Cy-4mK" id="Zql-lL-MEJ"/>
-                        <segue destination="6B6-ZR-GDm" kind="show" identifier="ImageDetailVC" id="sP5-Gp-zdn"/>
+                        <segue destination="KHU-kr-JtA" kind="presentation" identifier="ImageDetailVC" id="aaC-Py-MtH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+            <point key="canvasLocation" x="1076" y="138.98050974512745"/>
         </scene>
         <!--More Info-->
         <scene sceneID="fGz-FG-vfb">
@@ -349,7 +351,14 @@
                             <outlet property="delegate" destination="imU-kf-bEn" id="Xck-18-Rh0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="More Info" id="zx0-AO-uho"/>
+                    <navigationItem key="navigationItem" title="More Info" id="zx0-AO-uho">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="jQ1-Sg-SfO">
+                            <color key="tintColor" red="0.48229777812957764" green="0.48238468170166016" blue="0.4822922945022583" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="backPressed:" destination="imU-kf-bEn" id="OoH-sH-GQG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="cameraLabel" destination="xId-CU-bdG" id="urS-mV-tVI"/>
                         <outlet property="descriptionLabel" destination="Spa-rc-dUJ" id="Qb9-Ug-JXQ"/>
@@ -363,25 +372,25 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rKE-n4-fW7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1580" y="139"/>
+            <point key="canvasLocation" x="2775.1999999999998" y="138.98050974512745"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="2Iq-IV-geb">
+        <scene sceneID="bCt-nP-Ajp">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6B6-ZR-GDm" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KHU-kr-JtA" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CZq-YP-79D">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mWD-lp-p4t">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="imU-kf-bEn" kind="relationship" relationship="rootViewController" id="IiQ-17-bKW"/>
+                        <segue destination="imU-kf-bEn" kind="relationship" relationship="rootViewController" id="po0-nT-T8a"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Phk-33-JbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UIa-DD-06i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="876" y="139"/>
+            <point key="canvasLocation" x="1836" y="138.98050974512745"/>
         </scene>
     </scenes>
     <resources>
