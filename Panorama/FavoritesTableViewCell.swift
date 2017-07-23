@@ -12,10 +12,11 @@ class FavoritesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var favoritesImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    var dataTask: URLSessionDataTask?
     
     func configureCell(_ imageResult: ImageRealmObject) {
         nameLabel.text = imageResult.name
-        _ = Five00pxClient.sharedInstance.getImage(imageResult.imageURL) { [weak self] (data, errorString) in
+        dataTask = Five00pxClient.sharedInstance.getImage(imageResult.imageURL) { [weak self] (data, errorString) in
             guard let strongSelf = self else { return }
             guard errorString == nil else {
                 print("Unable to download image")
@@ -25,6 +26,13 @@ class FavoritesTableViewCell: UITableViewCell {
                 strongSelf.favoritesImageView.image = image
             }
         }
+    }
+    
+    override func prepareForReuse() {
+        dataTask?.cancel()
+        dataTask = nil
+        favoritesImageView.image = nil
+        nameLabel.text = nil
     }
 
 }
