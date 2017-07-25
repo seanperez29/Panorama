@@ -69,7 +69,9 @@ class ImageDetailVC: UITableViewController {
     @IBAction func addToFavorites(_ sender: Any) {
         do {
             let realm = try Realm()
+            // ImageRealmObject added for persistence and only created due to ImageResult's conflict conforming to both ObjectMapper as well as RealmSwfit at the same time. This would ideally be solved by doing own parsing of ImageResult's properties and not using ObjectMapper or creating this separate ImageRealmObject. But for brevity sake this was my temporary solution, and would not be the solution of choice on a distributed app.
             let imageRealmObject = ImageRealmObject(itemId: Int(imageViewModel.imageID)!, name: imageViewModel.nameText, imageDescription: imageViewModel.descriptionText!, camera: imageViewModel.cameraText!, rating: Int(imageViewModel.ratingText)!, timesViewed: Int(imageViewModel.viewsText)!, imageURL: imageViewModel.imageUrl, userFullName: imageViewModel.photographerText, favoritesCount: Int(imageViewModel.favoritesText)!)
+            // ImageResultViewModel properties were implicitly unwrapped only because during initialization checks are already made for nil and default values set if need be. Therefore, none of these properties could be nil. However, additional checks can be made with guard statements for extra protection.
             try! realm.write {
                 realm.add(imageRealmObject)
             }

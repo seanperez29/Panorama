@@ -8,7 +8,7 @@
 
 import Foundation
 import RealmSwift
-
+// ImageRealmObject added for persistence and only created due to ImageResult's conflict conforming to both ObjectMapper as well as RealmSwfit at the same time. This would ideally be solved by doing own parsing of ImageResult's properties and not using ObjectMapper or creating this separate ImageRealmObject. But for brevity sake this was my temporary solution, and would not be the solution of choice on a distributed app.
 
 class ImageRealmObject: Object {
     
